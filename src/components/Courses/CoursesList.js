@@ -22,7 +22,8 @@ export default function CoursesList() {
                         <th>Teacher</th>
                         <th>Location</th>
                         <th>Duration</th>
-                        <th>Action</th>
+                        <th>Register</th>
+                        <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>

@@ -5,12 +5,12 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'materialize-css/dist/css/materialize.min.css';
 import 'materialize-css';
-import { AuthProvider } from './context/AuthContext';
+import { CartProvider } from './context/CartContext';
 
 ReactDOM.render(
-    <AuthProvider>
+    <CartProvider>
         <App />
-    </AuthProvider>,
+    </CartProvider>,
     document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
