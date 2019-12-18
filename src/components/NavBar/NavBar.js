@@ -7,8 +7,6 @@ import SignOutLink from './SignOutLink';
 import SignInLink from './SignInLink';
 
 export default function NavBar() {
-    let isLogin = localStorage.getItem('isLogin');
-    console.log(isLogin);
     return (
         <div className="navbar-fixed">
             <nav>
@@ -17,9 +15,9 @@ export default function NavBar() {
                     <ul id="nav-mobile" className="right hide-on-med-and-down">
                         <li><Link to="/courses">Courses List</Link></li>
                         <li><Link to="/courses/create">Create Course</Link></li>
-                        {
-                            isLogin ? <SignInLink/> : <SignOutLink/>
-                        }
+                        <SignInLink />
+                        <SignOutLink />
+
                     </ul>
                 </div>
             </nav>

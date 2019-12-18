@@ -1,13 +1,11 @@
-import React, { useState , useContext } from 'react';
+import React, { useState } from 'react';
 import {
     Link
 } from 'react-router-dom';
 import swal from '@sweetalert/with-react';
-import {AuthContext} from '../../context/AuthContext';
 
 export default function Login() {
     const [inputs, setInputs] = useState();
-    const {dispatch} = useContext(AuthContext);
 
     const handleChange = (e) => {
         e.persist();
@@ -19,7 +17,7 @@ export default function Login() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        fetch('http://localhost:8080/api/users/signin',{
+        fetch('http://localhost:8080/api/users/signin', {
             method: 'post',
             headers: {
                 Accept: "application/json",
@@ -27,22 +25,20 @@ export default function Login() {
             },
             body: JSON.stringify(inputs)
         })
-        .then(res=>{
-            return res.json();
-        })
-        .then(json=>{
-            if(json.success){
-                dispatch({type:'LOGIN_SUCCESS',isLogin: true})
-                localStorage.setItem('isLogin',true);
-                swal('LOGIN SUCCESS',json.message,'success')
-            }
-            else{
-                swal('ERROR',json.message,'warning')
-            }
-        })
-        .catch(err=>{
-            console.log(err);
-        })
+            .then(res => {
+                return res.json();
+            })
+            .then(json => {
+                if (json.success) {
+                    swal('LOGIN SUCCESS', json.message, 'success')
+                }
+                else {
+                    swal('ERROR', json.message, 'warning')
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            })
     }
     return (
         <div className="container">
