@@ -6,11 +6,14 @@ import * as serviceWorker from './serviceWorker';
 import 'materialize-css/dist/css/materialize.min.css';
 import 'materialize-css';
 import { CartProvider } from './context/CartContext';
+import { AuthProvider } from './context/AuthContext';
 
 ReactDOM.render(
-    <CartProvider>
-        <App />
-    </CartProvider>,
+    <AuthProvider>
+        <CartProvider>
+            <App />
+        </CartProvider>
+    </AuthProvider>,
     document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

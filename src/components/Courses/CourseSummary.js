@@ -14,16 +14,18 @@ export default function CourseSummary({ course }) {
             ...curr,
             course
         ])
-        console.log(carts);
     }
 
     const removeFromCart = () => {
         let id = course._id;
         console.log(id);
-        let index = newCart.map(c=>c.name).indexOf(course.name); 
-        setCarts(
-            
-        )
+        let index = carts.map(c => c.name).indexOf(course.name);
+        if (index !== -1) {
+            setCarts([
+                ...carts.slice(0, index),
+                ...carts.slice(index + 1)
+            ])
+        }
     }
 
     return (
