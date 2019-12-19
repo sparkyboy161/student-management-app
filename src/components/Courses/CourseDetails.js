@@ -15,7 +15,7 @@ export default function CourseDetails() {
         fetchCourse();
     }, [id]);
 
-    
+
     return (
         <div>
             <h1 className='center'>Details</h1>

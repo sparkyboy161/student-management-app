@@ -199,4 +199,28 @@ router.get('/logout', (req, res) => {
     })
 })
 
+router.post('/:id/register', (req, res) => {
+    const { body } = req;
+    User.findById(req.params.id)
+        .then(user => {
+            user.registeredSubjects = body;
+            if (user.registeredSubjects.length === 0) {
+                return res.json({
+                    success: false,
+                    message: `Error: You don't choose any subject`
+                })
+            }
+        
+            user.save()
+            .then(()=> res.json({
+                message: 'Subjects are registered successfully',
+                success: true,
+                body
+            }))
+            .catch(err => res.status(400).json('Error: ' + err));
+        
+        })
+        .catch(err => res.json(`Error: ${err}`))
+})
+
 module.exports = router;
