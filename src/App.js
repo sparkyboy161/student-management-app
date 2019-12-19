@@ -13,6 +13,7 @@ import CreateCourse from './components/Courses/CreateCourse';
 import Login from './components/Auth/Login';
 import SignUp from './components/Auth/SignUp';
 import Homepage from './pages/Homepage';
+import UserDashboard from './components/Profile/UserDashboard';
 
 function App() {
   return (
@@ -36,6 +37,9 @@ function App() {
         </Route>
         <Route exact path='/courses/create'>
           <CreateCourse/>
+        </Route>
+        <Route path='/users/:id'>
+          <UserDashboard/>
         </Route>
         <Route path='/courses/:id'>
           <CourseDetails/>

@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {
-    Link
+    Link, Redirect
 } from 'react-router-dom';
 import swal from '@sweetalert/with-react';
+import { AuthContext } from '../../context/AuthContext';
+
 
 export default function Login() {
     const [inputs, setInputs] = useState();
+    const [loginId, setLoginId] = useContext(AuthContext);
 
     const handleChange = (e) => {
         e.persist();
@@ -30,7 +33,10 @@ export default function Login() {
             })
             .then(json => {
                 if (json.success) {
-                    swal('LOGIN SUCCESS', json.message, 'success')
+                    swal('LOGIN SUCCESS', json.message, 'success');
+                    setLoginId([json.userId]);
+                    console.log(loginId);
+
                 }
                 else {
                     swal('ERROR', json.message, 'warning')
@@ -40,6 +46,11 @@ export default function Login() {
                 console.log(err);
             })
     }
+
+    if (loginId !== 0) {
+        return <Redirect to={`/users/${loginId}`} />
+    }
+
     return (
         <div className="container">
             <div className="row">

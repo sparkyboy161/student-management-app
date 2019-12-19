@@ -23,6 +23,10 @@ const UserSchema = new Schema({
     isDeleted: {
         type: Boolean,
         default: false
+    },
+    registeredSubjects: {
+        type: Array,
+        default: ''
     }
 });
 
